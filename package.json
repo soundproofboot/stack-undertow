@@ -1,0 +1,20 @@
+{
+  "name": "stack-undertow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soundproofboot/stack-undertow.git"
+  },
+  "author": "Colin Bares",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soundproofboot/stack-undertow/issues"
+  },
+  "homepage": "https://github.com/soundproofboot/stack-undertow#readme"
+}
