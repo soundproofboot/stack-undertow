@@ -20,29 +20,29 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    // include: [
-    //   {
-    //     model: Post,
-    //     attributes: [
-    //       'id',
-    //       'post_title',
-    //       'post_text',
-    //       'created_at'
-    //     ]
-    //   },
-    //   {
-    //     model: Comment,
-    //     attributes: [
-    //       'id',
-    //       'comment_text',
-    //       'created_at'
-    //     ],
-    //     include: {
-    //       model: Post,
-    //       attributes: ['title']
-    //     }
-    //   }
-    // ]
+    include: [
+      {
+        model: Post,
+        attributes: [
+          'id',
+          'post_title',
+          'post_text',
+          'created_at'
+        ]
+      },
+      {
+        model: Comment,
+        attributes: [
+          'id',
+          'comment_text',
+          'created_at'
+        ],
+        include: {
+          model: Post,
+          attributes: ['post_title']
+        }
+      }
+    ]
   })
   .then(dbUserData => {
     if (!dbUserData) {
@@ -57,6 +57,7 @@ router.get('/:id', (req, res) => {
 });
 
 // add a new user with info from req.body
+// start session
 router.post('/', (req, res) => {
   User.create({
     username: req.body.username,
@@ -77,5 +78,34 @@ router.post('/', (req, res) => {
     res.status(500).json(err);
   });
 });
+
+// log in user, save session
+router.post('/login', (req, res) => {
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then(dbUserData => {
+    if (!dbUserData) {
+      res.status(400).json({ message: 'No user with this email' })
+      return;
+    }
+
+    const validPassword = dbUserData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res.status(400).json({ message: 'Wrong password' });
+      return;
+    }
+
+    req.session.save(() => {
+      // set up session variables
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+
+      res.json({ user: dbUserData, message: 'You are loggined in' });
+    })
+  })
+})
 
 module.exports = router;
