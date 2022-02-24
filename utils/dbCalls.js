@@ -46,4 +46,33 @@ async function getPostById(postId) {
   return postData;
 }
 
-module.exports = { getAllPosts, getPostById };
+async function getUserPosts(userId) {
+  let dbPostData = await Post.findAll({
+    where: {
+      // use the ID from the session
+      user_id: userId,
+    },
+    attributes: [
+      'id',
+      'post_title',
+      'post_text',
+      'created_at',
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username'],
+        },
+      },
+      {
+        model: User,
+        attributes: ['username'],
+      },
+    ],
+  });
+  return dbPostData;
+}
+module.exports = { getAllPosts, getPostById, getUserPosts };
