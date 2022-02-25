@@ -15,7 +15,12 @@ async function signUp(e){
       }),
       headers: { 'Content-Type': 'application/json' }
     });
-    if (!response.ok) console.log('success');
+    
+    if (response.ok) {
+      console.log('success');
+      document.location.replace('/dashboard');
+      
+    }
     else console.log(response.statusText);
   }
 };
