@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
       res.render('dashboard', { posts, loggedIn: true });
     }
   } else {
-    res.render('pleaselogin');
+    res.redirect('/login');
   };
 });
 
