@@ -7,8 +7,8 @@ router.get('/', async (req, res) => {
     await getAllPosts()
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
-      res.render('homepage', { posts, loggedIn: req.session.loggedIn });
-      console.log(req.session.loggedIn);
+      posts.map(post => post.homePage = true);
+      res.render('homepage', { posts, loggedIn: req.session.loggedIn, });
     })
     .catch(err => {
       console.log(err);

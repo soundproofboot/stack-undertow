@@ -2,6 +2,8 @@
   <h2>
     <a href="/post/{{id}}">{{post_title}}</a>
     </h2>
+    {{#unless homePage }}
   <p>{{post_text}}</p>
+    {{/unless}}
   <p>posted by {{user.username}} on {{created_at}}</p>
 </article>
