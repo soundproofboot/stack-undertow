@@ -18,6 +18,7 @@
             <button id='logout' class='btn'>Log Out</button>
           {{else}}
             <a href='/login'>Log In</a>
+            <a href='/signup'>Sign Up</a>
           {{/if}}
         </nav>
       </header>
@@ -28,7 +29,7 @@
         cool beans
       </footer>
       {{#if loggedIn}}
-      <script src="/javascript/logout.js"></script>
+        <script src='/javascript/logout.js'></script>
       {{/if}}
     </div>
   </body>
