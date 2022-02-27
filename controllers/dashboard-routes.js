@@ -1,23 +1,22 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
-// need to set up auth
+
+const withAuth = require('../utils/auth');
 const { getUserPosts, getPostById } = require('../utils/dbCalls');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   if (req.session.user_id){
     let dbPostData = await getUserPosts(req.session.user_id);
     if (dbPostData) {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
       res.render('dashboard', { posts, loggedIn: true });
     }
-  } else {
-    res.redirect('/login');
-  };
+  }
 });
 
 // edit single post
-router.get('/edit/:id', async(req, res) => {
+router.get('/edit/:id', withAuth, async(req, res) => {
   await getPostById(req.params.id)
     .then(dbPostData => {
       if (dbPostData) {
