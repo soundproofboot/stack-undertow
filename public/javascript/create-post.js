@@ -2,7 +2,7 @@ async function createPost(e) {
   e.preventDefault();
   console.log('click create button');
   const title = document.querySelector('#post-title').value.trim();
-  const text = document.querySelector('#post-text').value.trim();
+  const text = document.querySelector('#post-text-textarea').value.trim();
   console.log(`${title} and ${text}`)
   if (title && text) {
     const response = await fetch('/api/posts', {
@@ -24,4 +24,4 @@ async function createPost(e) {
   }
 }
 
-document.querySelector('.new-post-form').addEventListener('submit', createPost);
+document.querySelector('.post-form').addEventListener('submit', createPost);

@@ -22,4 +22,4 @@ async function editPost(e) {
   else console.log(response.statusText);
 }
 
-document.querySelector('.edit-post-form').addEventListener('submit', editPost);
+document.querySelector('.post-form').addEventListener('submit', editPost);
