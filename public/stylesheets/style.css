@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: gray
+}
+
+ol {
+  list-style: none;
+}
+header a{
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  align-items: center;
+  height: 15vh;
+  border-bottom: 10px solid gray;
+}
+
+#logo {
+  margin-left: 50px;
+  margin-top: 20px;
+  font-size: 2em;
+ 
+}
+
+.enter {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+#signup {
+  margin-right: 50px;
+}
+
+#dashboard {
+  margin-right: 50px;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+  
+}
