@@ -10,13 +10,12 @@
   <body>
     <div class='wrapper'>
       <header>
-        <h1>
-          <a href='/' id="logo">Stack Undertow</a>
+        <h1 id="logo">
+          <a href='/'>Stack Undertow</a>
         </h1>
         <nav>
           {{#if loggedIn}}
             <a href='/dashboard' class="enter" id="dashboard">Dashboard</a>
-            <br>
             <button id='logout' class='btn'>Log Out</button>
           {{else}}
             <a href='/login' class="enter" id="login">Log In</a>

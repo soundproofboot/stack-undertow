@@ -2,7 +2,7 @@
   {{#each this}}
   <section class="comment">
     <div class="comment-info">
-      {{user.username}} on {{dateTime created_at}}
+       on <span class="date">{{dateTime created_at}}</span> <span class="username">{{user.username}}</span> said...
     </div>
     <div class="comment_text">
       {{comment_text}}

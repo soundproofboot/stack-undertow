@@ -8,7 +8,14 @@
 a {
   text-decoration: none;
   color: rgb(0, 0, 0);
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  width: 500px;
+  justify-content: flex-end;
+  margin-right: 50px;
 }
 
 ol {
@@ -25,16 +32,17 @@ header {
   color: white;
   align-items: center;
   height: 15vh;
-  border-bottom: 10px solid gray;
+  border-bottom: 5px solid gray;
   position: sticky;
   top: 0;
 }
 
-#logo {
+#logo a {
   margin-left: 50px;
   margin-top: 20px;
   font-size: 2rem;
   font-family: 'Arial';
+  font-size: 1.5em;
 }
 
 .enter {
@@ -81,6 +89,7 @@ footer {
   border-top: 5px solid gray;
   position: sticky;
   bottom: 0;
+  margin-top: 50px;
 }
 
 .post {
@@ -88,6 +97,7 @@ footer {
   border: solid 1px darkgray;
   padding: 20px;
   background-color: rgba(47, 79, 79, 0.575);
+  border: 5px solid rgba(0, 0, 0, 0.815);
 }
 
 .post-text {
@@ -96,6 +106,39 @@ footer {
   margin: 30px 0;
 }
 
-.post-title {
-  padding-top: 20px;
+.btn {
+  background-color: darkslategray;
+  color: white;
+  font-weight: bold;
+  width: 100px;
 }
+
+.comment-form {
+  display: flex;
+  align-items: flex-end;
+  margin: 20px 0;
+}
+
+.comment-textarea {
+  width: 50vw;
+  height: 10vh;
+}
+
+#comment-btn {
+  margin: 1vw;
+}
+.comment {
+  background-color:rgba(47, 79, 79, 0.315);
+  border: 3px solid rgba(0, 0, 0, 0.815);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.comment > * {
+  margin: 20px;
+}
+
+.comment:nth-child(2) {
+  background-color:rgba(47, 79, 79, 0.767)
+}
+
