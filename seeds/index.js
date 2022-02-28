@@ -14,5 +14,4 @@ const seedAll = async() => {
   process.exit(0);
 };
 
-// module.exports = {seedUsers, seedPosts, seedComments}
 seedAll();
