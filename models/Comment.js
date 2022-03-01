@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 
 class Comment extends Model {};
 
+// comment model, with id, comment text, and foreign keys for user and post model
 Comment.init(
   {
     id: {

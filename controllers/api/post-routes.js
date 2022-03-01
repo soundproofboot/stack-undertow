@@ -5,6 +5,7 @@ const withAuth = require('../../utils/auth');
 // get all posts
 router.get('/', (req, res) => {
   Post.findAll({
+    // sort by most recent
     order: [['created_at', 'DESC']],
     attributes: [
       'id',
@@ -12,6 +13,7 @@ router.get('/', (req, res) => {
       'post_text',
       'created_at'
     ],
+    // include comments for post and user
     include: [
       {
         model: Comment,
@@ -27,6 +29,7 @@ router.get('/', (req, res) => {
       }
     ]
   })
+  // respond with posts or if error, respond with status 500 and error message
   .then(dbPostData => res.json(dbPostData))
   .catch(err => {
     console.log(err);
@@ -82,9 +85,11 @@ router.get('/:id', (req, res) => {
 
 // create new post
 router.post('/', withAuth, (req, res) => {
+  // post values from request body
   Post.create({
     post_title: req.body.post_title,
     post_text: req.body.post_text,
+    // pull user id from user's session
     user_id: req.session.user_id
   })
   .then(dbPostData => res.json(dbPostData))
@@ -96,12 +101,14 @@ router.post('/', withAuth, (req, res) => {
 
 // edit post
 router.put('/:id', withAuth, (req, res) => {
+  // pull values from request body
   Post.update(
     {
       post_title: req.body.post_title,
       post_text: req.body.post_text
     },
     {
+      // match post id from query paramaters
       where: {
         id: req.params.id
       }
@@ -121,6 +128,7 @@ router.put('/:id', withAuth, (req, res) => {
 
 // delete post
 router.delete('/:id', withAuth, async (req, res) => {
+  // pull id for post to destroy from query paramaters
   await Post.destroy({
     where: {
       id: req.params.id

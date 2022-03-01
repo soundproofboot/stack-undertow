@@ -1,6 +1,8 @@
+{{!-- edit post page --}}
 <article>
   <h2>Edit Post</h2>
   <form class="post-form">
+    {{!-- fill inputs with current values for post --}}
     <div>
       <label for="post-title">Title</label>
       <input type="text" name="post-title" value="{{post.post_title}}" id="post-title"/>
@@ -13,5 +15,6 @@
   </form>
 </article>
 
+{{!-- functionality for edit and delete buttons --}}
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>

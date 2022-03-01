@@ -1,3 +1,4 @@
+// helper function to format created_at property for posts and comments
 module.exports = {
   
   dateTime: date => {

@@ -1,7 +1,9 @@
 <div class="comments">
+  {{!-- for each of the comments passed to this view --}}
   {{#each this}}
   <section class="comment">
     <div class="comment-info">
+      {{!-- use helper function to display simplified date --}}
        on <span class="date">{{dateTime created_at}}</span> <span class="username">{{user.username}}</span> said...
     </div>
     <div class="comment_text">

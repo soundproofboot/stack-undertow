@@ -1,5 +1,7 @@
+{{!-- page for single post, use post-info partial to display --}}
 {{>post-info post}}
 
+{{!-- if user logged in, comment form shown --}}
 {{#if loggedIn}}
 <form class="comment-form">
   <div>
@@ -12,8 +14,10 @@
 </form>
 {{/if}}
 
+{{!-- use comments partial to show comments on this post --}}
 {{> comments post.comments}}
 
+{{!-- if user is logged in, add functionality for comment form --}}
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 {{/if}}

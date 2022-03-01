@@ -4,8 +4,9 @@ const { User, Post, Comment } = require('../../models');
 
 // get all users from db
 router.get('/', (req, res) => {
+  // don't return password
   User.findAll({
-    attributes: { exlcude: ['password'] },
+    attributes: ['id', 'username'],
   })
   .then(dbUserData => {res.json(dbUserData)})
   .catch(err => {
@@ -91,6 +92,7 @@ router.post('/login', (req, res) => {
       return;
     }
 
+    // check for valid password before allowing login
     const validPassword = dbUserData.checkPassword(req.body.password);
     if (!validPassword) {
       res.status(400).json({ message: 'Wrong password' });
@@ -113,6 +115,7 @@ router.post('/login', (req, res) => {
 // log user out
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
+    // destory session for that user
     req.session.destroy(() => {
       res.status(204).end();
     });

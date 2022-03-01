@@ -5,6 +5,7 @@ const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 const { getUserPosts, getPostById } = require('../utils/dbCalls');
 
+// check user is logged in, if so return their dashboard with posts they've made
 router.get('/', withAuth, async (req, res) => {
   if (req.session.user_id){
     let dbPostData = await getUserPosts(req.session.user_id);
@@ -15,8 +16,10 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+
 // edit single post
 router.get('/edit/:id', withAuth, async(req, res) => {
+  // grab post to edit
   await getPostById(req.params.id)
     .then(dbPostData => {
       if (dbPostData) {

@@ -1,5 +1,6 @@
 const { User, Post, Comment } = require('../models');
 
+// these functions are used only to simplify some of the api calls and reduce redundancy
 async function getAllPosts() {
   let postData = await Post.findAll({
     order: [['created_at', 'DESC']],

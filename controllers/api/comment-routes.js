@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
       'user_id',
       'post_id'
     ],
+    // sort by most recent
     order: [['created_at', 'DESC']],
     include: [
       {
@@ -23,6 +24,7 @@ router.get('/', (req, res) => {
       }
     ]
   })
+  // respond with comment data or send 500 status and error message
   .then(dbCommentData => res.json(dbCommentData))
   .catch(err => {
     console.log(err);
@@ -63,6 +65,7 @@ router.get('/:id', (req, res) => {
 
 // add new comment
 router.post('/', withAuth, (req, res) => {
+  // pull values from body of req
     Comment.create({
       comment_text: req.body.comment_text,
       post_id: req.body.post_id,

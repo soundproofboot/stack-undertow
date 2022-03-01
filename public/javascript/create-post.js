@@ -1,10 +1,13 @@
+// handler for function to create new post
 async function createPost(e) {
   e.preventDefault();
-  console.log('click create button');
+
+  // get values from form
   const title = document.querySelector('#post-title').value.trim();
   const text = document.querySelector('#post-text-textarea').value.trim();
-  console.log(`${title} and ${text}`)
+
   if (title && text) {
+    // make api call to add post to db
     const response = await fetch('/api/posts', {
       method: 'POST',
       body: JSON.stringify({
@@ -24,4 +27,5 @@ async function createPost(e) {
   }
 }
 
+// add handler to post form
 document.querySelector('.post-form').addEventListener('submit', createPost);

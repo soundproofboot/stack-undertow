@@ -13,12 +13,15 @@
   </form>
 </section>
 
+{{!-- if there are posts in the db passed to this view, display them --}}
 {{#if posts.length}}
 <section>
   <h2>Your Posts</h2>
   <ol>
+    {{!-- for each post, use post partial to display info --}}
     {{#each posts as |post|}}
     <li>
+      {{!-- send to post-info partial --}}
       {{> post-info post}}
       <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Post</a>
     </li>
@@ -27,4 +30,5 @@
 </section>
 {{/if}}
 
+{{!-- functionality for create post button --}}
 <script src="/javascript/create-post.js"></script>

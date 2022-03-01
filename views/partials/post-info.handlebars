@@ -2,6 +2,8 @@
   <h2  class="post-title">
     <a href="/post/{{id}}">{{post_title}}</a>
     </h2>
+    {{!-- if the posts are being sent to this view from the homepage route they are given a property to let this view use --}}
+    {{!-- the helper function, which uses #unless to prevent the full text of each post from being displayed --}}
     {{#unless homePage }}
   <p class="post-text">{{post_text}}</p>
     {{/unless}}
