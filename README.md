@@ -21,6 +21,9 @@ Stack Undertow is a demo full-stack CMS style blog. It's built with the MVC para
 If you'd like to run this on your own machine, clone the starter code. Then add your mysql credentials to a .env file to sync sequelize. Start the server by running npm start.
 
 ## Usage
+
+![Stack Undertow screenshot](/public/assets/stack-undertow-screenshot.png)
+
 The Stack Undertow homepage lists arcticles by creation date. Users can browse these articles without an account, but must register to make posts of their own or comment on other users' posts. Users can register with a username and password. They are then taken to a dashboard, where they're shown a form to make a new post, and any posts they've made will be listed on their dashboard. They can edit or delete posts they've created. When a user goes to a single post they'll see any comments that have been left, and leave a comment of their own if they are logged in.
 
 The application can be seen live on [Heroku](https://immense-dawn-78650.herokuapp.com/).
